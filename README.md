@@ -25,7 +25,7 @@ sys2mqtt v0.2.2 can publish the folliwing system statistics to an MQTT broker:
 
 The program has been tested for compatibility on the following operating systems, for further compatibility information you can check the documentation for psutil on GitHub.
 
-### v0.2.1 Tested on the following, v0.2.2 Needs testing on all platforms.
+### v0.2.1 Tested on the following, v0.2.2 Current version only tested on Ubuntu 18.04.
 
 For details of previous versions tested and compatibility with other platforms see the wiki.
 See footnotes for notes.
