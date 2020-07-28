@@ -70,6 +70,7 @@ This information will be available on the sys2mqtt wiki.
 - [ ] 0.4.0 Inclusion of temerature and fan information.
 - [ ] 0.5.0 Extend `conf.py` file to allow users to choose which metrics they would like enabled.
 - [ ] 0.5.1 Improved error handling.
+- [ ] 0.5.1 Move to self hosted git solution.
 - [ ] 0.5.2 Create wiki for documentation.
 - [ ] 1.0.0 Logging.
 
