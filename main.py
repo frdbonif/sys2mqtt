@@ -66,9 +66,9 @@ def getcpu():
 def getmem():
     global virtmem, memutil, swapmem, swaputil
 
-    memutil = virtmem[2]  # Get RAM util
+    memutil = virtmem[2] # Get RAM util
     print("RAM utilisation = {}%".format(memutil))
-    swaputil = swapmem[3]  # Get swap util
+    swaputil = swapmem[3] # Get swap util
     print("Swap utilisation = {}%".format(swaputil))
 
 getcpu()
