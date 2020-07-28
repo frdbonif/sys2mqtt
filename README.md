@@ -33,6 +33,7 @@ See footnotes for notes.
 #### Linux
 
 - Ubuntu, 18.04^1, 20.04^1
+- CentOS, 8^1
 
 #### Windows
 
