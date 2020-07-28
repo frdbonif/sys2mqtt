@@ -41,7 +41,7 @@ See footnotes for notes.
 
 #### Other
 
-- 
+- FreeBSD, 12.1^1
 
 ## Installation
 
@@ -59,9 +59,10 @@ This information will be available on the sys2mqtt wiki.
 - [X] 0.2.0 Add Windows 10 hostname resolution support.
 - [X] 0.2.0 Add copyright and lisence details to `main.py` and `conf.py`.
 - [X] 0.2.2 Move totalram and totalswap checks out from function to main body, repetetive checking of static metrics is wasteful.
-- [ ] 0.2.2 Test on FreeBSD.
-- [ ] 0.2.2 Test on CentOS.
+- [X] 0.2.2 Test on FreeBSD.
+- [X] 0.2.2 Test on CentOS.
 - [ ] 0.2.2 Test on Debian.
+- [ ] 0.2.2 Provide QoS Option for MQTT.
 - [ ] 0.2.3 Create sys2mqtt as Python package.
 - [ ] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
 - [ ] 0.2.3 Implement ON/OFF state setting suitable parameters to zero on shutdown.
