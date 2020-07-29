@@ -25,7 +25,7 @@ sys2mqtt v0.2.2 can publish the folliwing system statistics to an MQTT broker:
 
 The program has been tested for compatibility on the following operating systems, for further compatibility information you can check the documentation for psutil on GitHub.
 
-### v0.2.1 Tested on the following, v0.2.2 Current version only tested on Ubuntu 18.04.
+### v0.2.2 Tested on the following
 
 For details of previous versions tested and compatibility with other platforms see the wiki.
 See footnotes for notes.
@@ -62,6 +62,8 @@ This information will be available on the sys2mqtt wiki.
 - [X] 0.2.2 Test on FreeBSD.
 - [X] 0.2.2 Test on CentOS.
 - [ ] 0.2.2 Test on Debian.
+- [ ] 0.2.2 Test on FreeDOS.
+- [ ] 0.2.2 Test on Sangoma Linux (CentOS Based)
 - [ ] 0.2.2 Provide QoS Option for MQTT.
 - [ ] 0.2.3 Create sys2mqtt as Python package.
 - [ ] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
