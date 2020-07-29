@@ -66,7 +66,7 @@ This information will be available on the sys2mqtt wiki.
 - [X] 0.2.2 Test on FreeBSD.
 - [X] 0.2.2 Test on CentOS.
 - [ ] 0.2.2 Test on Debian.
-- [X] 0.2.2 Test on Sangoma Linux 7 (CentOS 7 Based).
+- [X] 0.2.2 Test on Sangoma Linux 7 (CentOS 7 Based).  Likely common with CentOS 7 which is EOL.
 - [ ] 0.2.2 Provide QoS Option for MQTT.
 - [ ] 0.2.3 Create sys2mqtt as Python package.
 - [ ] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
