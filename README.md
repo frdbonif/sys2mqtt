@@ -32,16 +32,20 @@ See footnotes for notes.
 
 #### Linux
 
-- Ubuntu, 18.04^1, 20.04^1
-- CentOS, 8^1
+- Ubuntu, 18.04^1^, 20.04^1^
+- CentOS, 8^1^
 
 #### Windows
 
-- Windows 10, Version 2004^1
+- Windows 10, Version 2004^1^
 
 #### Other
 
 - FreeBSD, 12.1^1
+
+#### Currently known not working
+
+- Sangoma Linux 7 (paho-mqtt does not run)
 
 ## Installation
 
@@ -62,8 +66,7 @@ This information will be available on the sys2mqtt wiki.
 - [X] 0.2.2 Test on FreeBSD.
 - [X] 0.2.2 Test on CentOS.
 - [ ] 0.2.2 Test on Debian.
-- [ ] 0.2.2 Test on FreeDOS.
-- [ ] 0.2.2 Test on Sangoma Linux (CentOS Based)
+- [X] 0.2.2 Test on Sangoma Linux 7 (CentOS 7 Based).
 - [ ] 0.2.2 Provide QoS Option for MQTT.
 - [ ] 0.2.3 Create sys2mqtt as Python package.
 - [ ] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
