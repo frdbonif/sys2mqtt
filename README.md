@@ -32,16 +32,16 @@ See footnotes for notes.
 
 #### Linux
 
-- Ubuntu, 18.04^1^, 20.04^1^
-- CentOS, 8^1^
+- Ubuntu, 18.04, 20.04
+- CentOS, 8
 
 #### Windows
 
-- Windows 10, Version 2004^1^
+- Windows 10, Version 2004
 
 #### Other
 
-- FreeBSD, 12.1^1
+- FreeBSD, 12.1
 
 #### Currently known not working
 
@@ -76,4 +76,4 @@ This information will be available on the sys2mqtt wiki.
 
 ## Footnotes
 
-^1 Only tested with Intel 64-bit processors, there is no known reasons for it not to work with 32-bit or AMD processors.
+Only tested on Intel CPU's although believed to work on other x86 CPU's.
