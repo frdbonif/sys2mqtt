@@ -1,4 +1,4 @@
-# **sys2mqtt** v0.2.2
+# **sys2mqtt** v0.2.3
 
 ## License
 
@@ -12,7 +12,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 sys2mqtt was born out of my want to view statistics of several systems within OpenHAB.  Using MQTT the data can be displayed or stored in many ways.
 
-sys2mqtt v0.2.2 can publish the folliwing system statistics to an MQTT broker:
+sys2mqtt v0.2.3 can publish the folliwing system statistics to an MQTT broker:
 
 - Number of logical CPU Cores
 - CPU Utilisation as a percentage
@@ -25,27 +25,27 @@ sys2mqtt v0.2.2 can publish the folliwing system statistics to an MQTT broker:
 
 The program has been tested for compatibility on the following operating systems, for further compatibility information you can check the documentation for psutil on GitHub.
 
-### v0.2.2 Tested on the following
+### v0.2.3 Tested on the following
 
 For details of previous versions tested and compatibility with other platforms see the wiki.
 See footnotes for notes.
 
 #### Linux
 
-- Ubuntu, 18.04, 20.04
-- CentOS, 8
+- Ubuntu, 18.04, //20.04//
+- CentOS, //8//
 
 #### Windows
 
-- Windows 10, Version 2004
+- Windows 10, //Version 2004//
 
 #### Other
 
-- FreeBSD, 12.1
+- FreeBSD, //12.1//
 
 #### Currently known not working
 
-- Sangoma Linux 7 (paho-mqtt does not run)
+- Sangoma Linux //7 (paho-mqtt does not run)//
 
 ## Installation
 
@@ -60,8 +60,8 @@ This information will be available on the sys2mqtt wiki.
 ## Task List
 
 - [X] 0.2.2 Provide QoS Option for MQTT.
-- [ ] 0.2.3 Create sys2mqtt as Python package.
-- [ ] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
+- [X] 0.2.3 Create sys2mqtt as Python package.
+- [X] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
 - [ ] 0.2.3 Implement ON/OFF state setting suitable parameters to zero on shutdown.
 - [ ] 0.2.3 Test in Debian.
 - [ ] 0.2.4 Create and include systemd service file.
