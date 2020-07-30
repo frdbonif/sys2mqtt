@@ -5,13 +5,13 @@
 
 # Set the URL and port of your MQTT broker
 # be sure to keep the correct format, as below.
-broker_url = "openhab.srv.fjla.uk"
+broker_url = "mqtt-server"
 broker_port = 1883
 
 # If your MQTT broker needs authentication
 # enter your username and password below.
-username = "sys2mqtt"
-password = "sys2mqtt"
+username = "mqtt-user"
+password = "mqtt-pass"
 
 # Set MQTT QOS Option.  0 = "Send once", 1 = "Broker will receive at least once",
 # 2 = "Broker will receive at most once".

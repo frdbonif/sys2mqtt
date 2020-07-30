@@ -27,25 +27,24 @@ The program has been tested for compatibility on the following operating systems
 
 ### v0.2.3 Tested on the following
 
-For details of previous versions tested and compatibility with other platforms see the wiki.
+It is likely that sys2mqtt will run on a number of systems but cannot be tested on every distro.
+All non-Windows systems listed below have been tested using default repos unless otherwise noted.
 See footnotes for notes.
 
 #### Linux
 
-- Ubuntu, 18.04, //20.04//
-- CentOS, 8
+- CentOS 8
+- Debian 10
+- Sangoma Linux 7.6
+- Ubuntu, 18.04, 20.04
 
 #### Windows
 
-- Windows 10, //Version 2004//
+- Windows 10, Version 2004
 
 #### Other
 
-- FreeBSD, //12.1//
-
-#### Currently known not working
-
-- Sangoma Linux //7 (paho-mqtt does not run)//
+- FreeBSD, 12.1
 
 ## Installation
 
@@ -62,7 +61,7 @@ This information will be available on the sys2mqtt wiki.
 - [X] 0.2.2 Provide QoS Option for MQTT.
 - [X] 0.2.3 Create sys2mqtt as Python package.
 - [X] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
-- [ ] 0.2.3 Test in Debian.
+- [X] 0.2.3 Test in Debian.
 - [ ] 0.2.4 Create and include systemd service file.
 - [ ] 0.3.0 Insert loop into program to remove reliance on cron or systemd timers.
 - [ ] 0.3.1 Inclusion of drive information.
@@ -77,3 +76,11 @@ This information will be available on the sys2mqtt wiki.
 ## Footnotes
 
 Only tested on Intel CPU's although believed to work on other x86 CPU's.
+
+### For Sangoma Linux 7.6 ensure to install the following first:
+pip - yum install python36u-pip
+python3 devel - yum install python36u-devel
+
+Once these packages have been installed from the default repos you can continue to install the python package dependencies using pip3.6.
+
+The script should be invoked using python3.6 /path/to/main.py.

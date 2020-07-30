@@ -8,7 +8,7 @@ import socket			            # Included with python3
 import random                       # Included with python3
 import psutil                       # pip3 install psutil
 import paho.mqtt.client as mqtt     # pip3 install paho-mqtt
-import conf
+import conf                         # Included with sys2mqtt
 
 
 # Get hostname
