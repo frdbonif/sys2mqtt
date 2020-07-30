@@ -1,31 +1,15 @@
 #!/usr/bin/env python3
 
-# sys2mqtt version 0.2.2  (C) Fred Boniface 2020
+# sys2mqtt version 0.2.3  (C) Fred Boniface 2020
 # Distributed under the GPLv3 License
 
 # imports
-import socket			    # Included with python3
+import socket			            # Included with python3
 import random                       # Included with python3
 import psutil                       # pip3 install psutil
 import paho.mqtt.client as mqtt     # pip3 install paho-mqtt
+import conf                         # Included with sys2mqtt
 
-########## Start of settings block (move to external file) ############
-
-# Set the URL and port of your MQTT broker
-# be sure to keep the correct format, as below.
-broker_url = "openhab.srv.fjla.uk"
-broker_port = 1883
-
-# If your MQTT broker needs authentication
-# enter your username and password below.
-username = "sys2mqtt"
-password = "sys2mqtt"
-
-# Set MQTT QOS Option.  0 = "Send once", 1 = "Broker will receive at least once",
-# 2 = "Broker will receive at most once".
-q = 1
-
-########################### END OF SETTINGS ###########################
 
 # Get hostname
 try:
@@ -89,13 +73,13 @@ getmem()
 
 # Initiate MQTT Connection
 client = mqtt.Client()
-client.username_pw_set(username, password=password)
-client.connect(broker_url, broker_port)
+client.username_pw_set(conf.username, password=conf.password)
+client.connect(conf.broker_url, conf.broker_port)
 
 # Publish payloads
-client.publish(topic=corestopic, payload=cores, qos=q, retain=True)
-client.publish(topic=cpuutiltopic, payload=procutil, qos=q, retain=False)
-client.publish(topic=totramtopic, payload=totramgbyte, qos=q, retain=True)
-client.publish(topic=ramutiltopic, payload=memutil, qos=q, retain=False)
-client.publish(topic=totswaptopic, payload=totswapgbyte, qos=q, retain=True)
-client.publish(topic=swaputiltopic, payload=swaputil, qos=q, retain=False)
+client.publish(topic=corestopic, payload=cores, qos=conf.q, retain=True)
+client.publish(topic=cpuutiltopic, payload=procutil, qos=conf.q, retain=False)
+client.publish(topic=totramtopic, payload=totramgbyte, qos=conf.q, retain=True)
+client.publish(topic=ramutiltopic, payload=memutil, qos=conf.q, retain=False)
+client.publish(topic=totswaptopic, payload=totswapgbyte, qos=conf.q, retain=True)
+client.publish(topic=swaputiltopic, payload=swaputil, qos=conf.q, retain=False)
