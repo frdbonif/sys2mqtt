@@ -4,7 +4,7 @@
 # Distributed under the GPLv3 License
 
 # imports
-import socket                       # Included with python3
+import socket			    # Included with python3
 import random                       # Included with python3
 import psutil                       # pip3 install psutil
 import paho.mqtt.client as mqtt     # pip3 install paho-mqtt
@@ -20,6 +20,10 @@ broker_port = 1883
 # enter your username and password below.
 username = "sys2mqtt"
 password = "sys2mqtt"
+
+# Set MQTT QOS Option.  0 = "Send once", 1 = "Broker will receive at least once",
+# 2 = "Broker will receive at most once".
+q = 1
 
 ########################### END OF SETTINGS ###########################
 
@@ -89,9 +93,9 @@ client.username_pw_set(username, password=password)
 client.connect(broker_url, broker_port)
 
 # Publish payloads
-client.publish(topic=corestopic, payload=cores, qos=0, retain=False)
-client.publish(topic=cpuutiltopic, payload=procutil, qos=0, retain=False)
-client.publish(topic=totramtopic, payload=totramgbyte, qos=0, retain=False)
-client.publish(topic=ramutiltopic, payload=memutil, qos=0, retain=False)
-client.publish(topic=totswaptopic, payload=totswapgbyte, qos=0, retain=False)
-client.publish(topic=swaputiltopic, payload=swaputil, qos=0, retain=False)
+client.publish(topic=corestopic, payload=cores, qos=q, retain=True)
+client.publish(topic=cpuutiltopic, payload=procutil, qos=q, retain=False)
+client.publish(topic=totramtopic, payload=totramgbyte, qos=q, retain=True)
+client.publish(topic=ramutiltopic, payload=memutil, qos=q, retain=False)
+client.publish(topic=totswaptopic, payload=totswapgbyte, qos=q, retain=True)
+client.publish(topic=swaputiltopic, payload=swaputil, qos=q, retain=False)
