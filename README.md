@@ -78,9 +78,10 @@ This information will be available on the sys2mqtt wiki.
 Only tested on Intel CPU's although believed to work on other x86 CPU's.
 
 ### For Sangoma Linux 7.6 ensure to install the following first:
-pip - yum install python36u-pip
-python3 devel - yum install python36u-devel
+
+- pip `yum install python36u-pip`
+- python3 devel `yum install python36u-devel`
 
 Once these packages have been installed from the default repos you can continue to install the python package dependencies using pip3.6.
 
-The script should be invoked using python3.6 /path/to/main.py.
+The script should be invoked using python3.6 `/path/to/main.py`.
