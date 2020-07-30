@@ -33,7 +33,7 @@ See footnotes for notes.
 #### Linux
 
 - Ubuntu, 18.04, //20.04//
-- CentOS, //8//
+- CentOS, 8
 
 #### Windows
 
@@ -51,7 +51,7 @@ See footnotes for notes.
 
 Firstly, the program requires Python 3 and has been developed using Python 3.8.2.  Please ensure that python3 and the associated pip package is installed on your system.  It relies on the psutil, socket and paho-mqtt Python packages, these can be installed with pip if they are not available on your system.
 
-The current version should be downloaded and placed into a folder of your choosing.  The MQTT URL, port and authentication details should be entered in to the appropriate fields in `main.py`.  Then you should use either cron or systemd timers to run the program at your prefererd interval.  For further information see the sys2mqtt wiki.
+The current version should be downloaded and placed into a folder of your choosing.  The MQTT URL, port and authentication details should be entered in to the appropriate fields in `conf.py`.  Then you should use either cron or systemd timers to run the `main.py` at your prefererd interval.
 
 ## MQTT Topics
 
@@ -62,11 +62,11 @@ This information will be available on the sys2mqtt wiki.
 - [X] 0.2.2 Provide QoS Option for MQTT.
 - [X] 0.2.3 Create sys2mqtt as Python package.
 - [X] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
-- [ ] 0.2.3 Implement ON/OFF state setting suitable parameters to zero on shutdown.
 - [ ] 0.2.3 Test in Debian.
 - [ ] 0.2.4 Create and include systemd service file.
 - [ ] 0.3.0 Insert loop into program to remove reliance on cron or systemd timers.
 - [ ] 0.3.1 Inclusion of drive information.
+- [ ] 0.3.2 Implement ON/OFF state setting suitable parameters to zero on shutdown.
 - [ ] 0.4.0 Inclusion of temerature and fan information.
 - [ ] 0.5.0 Extend `conf.py` file to allow users to choose which metrics they would like enabled.
 - [ ] 0.5.1 Improved error handling.
