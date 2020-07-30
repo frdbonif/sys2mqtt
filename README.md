@@ -84,4 +84,4 @@ Only tested on Intel CPU's although believed to work on other x86 CPU's.
 
 Once these packages have been installed from the default repos you can continue to install the python package dependencies using pip3.6.
 
-The script should be invoked using python3.6 `/path/to/main.py`.
+The script should be invoked using `python3.6 /path/to/main.py`.
