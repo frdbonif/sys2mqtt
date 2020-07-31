@@ -1,4 +1,4 @@
-# **sys2mqtt** v0.2.4
+# **sys2mqtt** v0.2.9
 
 ## License
 
@@ -12,7 +12,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 sys2mqtt was born out of my want to view statistics of several systems within OpenHAB.  Using MQTT the data can be displayed or stored in many ways.
 
-sys2mqtt v0.2.4 can publish the folliwing system statistics to an MQTT broker:
+sys2mqtt v0.2.9 can publish the folliwing system statistics to an MQTT broker:
 
 - Number of logical CPU Cores
 - CPU Utilisation as a percentage
@@ -25,7 +25,7 @@ sys2mqtt v0.2.4 can publish the folliwing system statistics to an MQTT broker:
 
 The program has been tested for compatibility on the following operating systems, for further compatibility information you can check the documentation for psutil on GitHub.
 
-### v0.2.4 Not yet Tested --on the following--
+### v0.2.9 will not be Tested until v0.3.0 --on the following--
 
 It is likely that sys2mqtt will run on a number of systems but cannot be tested on every distro.
 All non-Windows systems listed below have been tested using default repos unless otherwise noted.
@@ -81,9 +81,9 @@ This information will be available on the sys2mqtt wiki.
 - [X] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
 - [X] 0.2.3 Test in Debian.
 - [X] 0.2.4 Create and include systemd service file.
-- [ ] 0.2.4 Create installer script.
-- [ ] 0.2.4 Insert loop into program to remove reliance on cron or systemd timers.
-- [ ] 0.3.0 Inclusion of drive information.
+- [ ] 0.3.0 Create installer script.
+- [ ] 0.3.0 Insert loop into program to remove reliance on cron or systemd timers.
+- [ ] 0.3.1 Inclusion of drive information.
 - [ ] 0.3.1 Implement ON/OFF state setting suitable parameters to zero on shutdown.
 - [ ] 0.3.2 Inclusion of temerature and fan information.
 - [ ] 0.4.0 Extend `conf.py` file to allow users to choose which metrics they would like enabled.
