@@ -50,7 +50,10 @@ See footnotes for notes.
 
 Firstly, the program requires Python 3 and has been developed using Python 3.8.2.  Please ensure that python3 and the associated pip package is installed on your system.  It relies on the psutil, socket and paho-mqtt Python packages, these can be installed with pip if they are not available on your system.
 
-You can install sys2mqtt as follows.  (Commands starting $ to be run as user, commands starting # to be run as root or using sudo)
+You can install sys2mqtt as follows on Debian based systems, for other systems consult the wiki.  (Commands starting $ to be run as user, commands starting # to be run as root or using sudo)
+
+Ensure dependencies are available.
+`#``apt install python3 python3-pip`
 
 Move to the correct directory for installing.
 `$``cd /usr/local/bin`
@@ -64,7 +67,7 @@ Move in to the newly created directory.
 Make sure the installer script is executable.
 `#``chmod +x install.sh`
 
-Run the installer script.  Be aware: You should always check scripts before you run them to be sure you know what they are modifying on your system.
+Run the installer script.  Be aware: You should always check scripts before you run them to be sure you know what they are modifying on your system.  If you'd rather not run the installer script, check the wiki for alternative methods.
 `#``./install.sh`
 
 ## MQTT Topics
@@ -100,4 +103,4 @@ Only tested on Intel CPU's although believed to work on other x86 CPU's.
 
 Once these packages have been installed from the default repos you can continue to install the python package dependencies using pip3.6.
 
-The script should be invoked using `python3.6 /path/to/main.py`.
+The script should be invoked using `python3.6 /usr/local/bin/sys2mqtt/main.py`.
