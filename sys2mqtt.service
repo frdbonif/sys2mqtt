@@ -5,7 +5,7 @@
  Description=sys2mqtt
 
  [Service]
- ExecStart=/usr/local/bin/sys2mqtt/python/main.py
+ ExecStart=/usr/local/bin/sys2mqtt/python/sys2mqtt.py
 
  [Install]
  WantedBy=multi-user.target

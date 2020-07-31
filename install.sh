@@ -6,6 +6,7 @@ echo "Copying and enabling sys2mqtt service"
 
 cp sys2mqtt.service  /etc/systemd/system/sys2mqtt.service
 
+systemctl daemon-reload
 systemctl enable sys2mqtt.service
 systemctl start sys2mqtt.service
 

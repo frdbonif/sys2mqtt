@@ -81,6 +81,7 @@ This information will be available on the sys2mqtt wiki.
 - [X] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
 - [X] 0.2.3 Test in Debian.
 - [X] 0.2.4 Create and include systemd service file.
+- [X] 0.3.0 Change name of `main.py` to `sys2mqtt.py`
 - [ ] 0.3.0 Create installer script.
 - [ ] 0.3.0 Insert loop into program to remove reliance on cron or systemd timers.
 - [ ] 0.3.1 Inclusion of drive information.
@@ -103,4 +104,4 @@ Only tested on Intel CPU's although believed to work on other x86 CPU's.
 
 Once these packages have been installed from the default repos you can continue to install the python package dependencies using pip3.6.
 
-The script should be invoked using `python3.6 /usr/local/bin/sys2mqtt/main.py`.
+The script should be invoked using `python3.6 /usr/local/bin/sys2mqtt/sys2mqtt.py`.
