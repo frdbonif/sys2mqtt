@@ -1,0 +1,11 @@
+ # This file should be placed into '/etc/systemd/system/'
+ # This will enable systemd to automatically load sys2mqtt on boot
+
+ [Unit]
+ Description=sys2mqtt
+
+ [Service]
+ ExecStart=/usr/bin/sys2mqtt/main.py
+
+ [Install]
+ WantedBy=multi-user.target
