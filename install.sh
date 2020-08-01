@@ -2,7 +2,7 @@
 
  echo "sys2mqtt v0.3.0"
  echo "sys2mqtt will now be installed as a systemd service, if you do not use systemd this script will not work"
- echo "This script will currently only install on Debian systems"
+ echo "This script will currently only install on Debian and Ubuntu systems"
  echo "Would you like to continue? (y/n)"
  read var_cont
 
