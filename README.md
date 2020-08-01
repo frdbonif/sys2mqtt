@@ -78,16 +78,14 @@ This information will be available on the sys2mqtt wiki.
 
 ## Task List
 
-- [ ] 0.3.0 Create installer script.
-- [ ] 0.3.0 Insert loop into program to remove reliance on cron or systemd timers.
-- [ ] 0.3.1 Inclusion of drive information.
-- [ ] 0.3.1 Implement ON/OFF state setting suitable parameters to zero on shutdown.
-- [ ] 0.3.2 Inclusion of temerature and fan information.
+- [ ] 0.4.0 Inclusion of drive information.
+- [ ] 0.4.0 Implement ON/OFF state setting suitable parameters to zero on shutdown.
+- [ ] 0.4.0 Inclusion of temerature and fan information.
 - [ ] 0.4.0 Extend `conf.py` file to allow users to choose which metrics they would like enabled.
-- [ ] 0.5.0 Improved error handling.
-- [ ] 0.5.1 Move to self hosted git solution.
-- [ ] 0.5.2 Create wiki for documentation.
-- [ ] 0.9.9(rc) Logging.
+- [ ] 0.4.4 Improved error handling.
+- [ ] 0.4.2 Move to self hosted git solution.
+- [ ] 0.4.2 Create wiki for documentation.
+- [ ] 0.4.3 Logging.
 
 ## Footnotes
 
