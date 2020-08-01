@@ -46,14 +46,16 @@ See footnotes for notes.
 
 - FreeBSD, 12.1
 
-## Installation
+## Installation (Debian & Ubuntu)
 
-Firstly, the program requires Python 3 and has been developed using Python 3.8.2.  Please ensure that python3 and the associated pip package is installed on your system.  It relies on the psutil, socket and paho-mqtt Python packages, these can be installed with pip if they are not available on your system.
+See the bottom of the page for installation on other systems, we don't have a wiki at the moment.
+
+Firstly, the program requires Python 3 and has been developed using Python 3.8.2.  It also relies on the psutil, socket and paho-mqtt Python packages.  If you follow the method below, these will all be installed for you.
 
 You can install sys2mqtt as follows on Debian based systems, for other systems consult the wiki.  (Commands starting $ to be run as user, commands starting # to be run as root or using sudo)
 
 Ensure dependencies are available.
-`#``apt install python3 python3-pip`
+`#``apt install git`
 
 Move to the correct directory for installing.
 `$``cd /usr/local/bin`
@@ -64,10 +66,10 @@ Clone the source of sys2mqtt.
 Move in to the newly created directory.
 `$``cd sys2mqtt`
 
-Make sure the installer script is executable.
+Make sure the required files are executable.
 `#``chmod +x install.sh`
 
-Run the installer script.  Be aware: You should always check scripts before you run them to be sure you know what they are modifying on your system.  If you'd rather not run the installer script, check the wiki for alternative methods.
+Run the installer script.  Be aware: You should always check scripts before you run them to be sure you know what they are modifying on your system.  If you'd rather not run the installer script, check the bottom of this README for alternative options.
 `#``./install.sh`
 
 ## MQTT Topics
@@ -97,11 +99,22 @@ This information will be available on the sys2mqtt wiki.
 
 Only tested on Intel CPU's although believed to work on other x86 CPU's.
 
-### For Sangoma Linux 7.6 ensure to install the following first:
+### Install on Sangoma Linux 7.6 (login as root)
 
-- pip `yum install python36u-pip`
-- python3 devel `yum install python36u-devel`
+`yum install python36u-pip python36u-devel git`
+`pip install psutil paho-mqtt`
 
-Once these packages have been installed from the default repos you can continue to install the python package dependencies using pip3.6.
+`cd /usr/local/bin`
+`git clone https://github.com/frdbonif/sys2mqtt`
+`cd sys2mqtt`
 
-The script should be invoked using `python3.6 /usr/local/bin/sys2mqtt/sys2mqtt.py`.
+Now, open the python/conf.py file and enter the details for your MQTT server.
+
+`cp systemd/sys2mqtt-sangoma76.service /etc/systemd/system/sys2mqtt.service`
+`systemctl daemon-reload`
+`systemctl enable sys2mqtt.service`
+`systemctl start sys2mqtt.service`
+
+sys2mqtt can be manually invoked using `python3.6 /usr/local/bin/sys2mqtt/sys2mqtt.py`.
+
+### Install on CentOS 8 (login as root)
