@@ -40,11 +40,11 @@ See footnotes for notes.
 
 #### Windows
 
-- Windows 10, Version 2004
+- Please use version 0.2.3 on Windows for the time being.
 
 #### Other
 
-- FreeBSD, 12.1
+- Please use version 0.2.3 on FreeBSD for the time being.
 
 ## Installation (Debian & Ubuntu)
 
@@ -78,12 +78,6 @@ This information will be available on the sys2mqtt wiki.
 
 ## Task List
 
-- [X] 0.2.2 Provide QoS Option for MQTT.
-- [X] 0.2.3 Create sys2mqtt as Python package.
-- [X] 0.2.3 Move user selectable optiond from `main.py` to `conf.py`.
-- [X] 0.2.3 Test in Debian.
-- [X] 0.2.4 Create and include systemd service file.
-- [X] 0.3.0 Change name of `main.py` to `sys2mqtt.py`
 - [ ] 0.3.0 Create installer script.
 - [ ] 0.3.0 Insert loop into program to remove reliance on cron or systemd timers.
 - [ ] 0.3.1 Inclusion of drive information.
@@ -101,20 +95,38 @@ Only tested on Intel CPU's although believed to work on other x86 CPU's.
 
 ### Install on Sangoma Linux 7.6 (login as root)
 
-`yum install python36u-pip python36u-devel git`
-`pip install psutil paho-mqtt`
-
-`cd /usr/local/bin`
-`git clone https://github.com/frdbonif/sys2mqtt`
-`cd sys2mqtt`
+- `yum install python36u-pip python36u-devel git`
+- `pip install psutil paho-mqtt`
+- `cd /usr/local/bin`
+- `git clone https://github.com/frdbonif/sys2mqtt.git`
+- `cd sys2mqtt`
 
 Now, open the python/conf.py file and enter the details for your MQTT server.
 
-`cp systemd/sys2mqtt-sangoma76.service /etc/systemd/system/sys2mqtt.service`
-`systemctl daemon-reload`
-`systemctl enable sys2mqtt.service`
-`systemctl start sys2mqtt.service`
-
-sys2mqtt can be manually invoked using `python3.6 /usr/local/bin/sys2mqtt/sys2mqtt.py`.
+- `cd /usr/local/bin/sys2mqtt`
+- `chmod -R 0755 python`
+- `cp systemd/sys2mqtt-sangoma76.service /etc/systemd/system/sys2mqtt.service`
+- `systemctl daemon-reload`
+- `systemctl enable sys2mqtt.service`
+- `systemctl start sys2mqtt.service`
 
 ### Install on CentOS 8 (login as root)
+
+- `yum install python3 python3-pip git`
+- `pip3 install psutil paho-mqtt --user`
+- `cd /usr/local/bin`
+- `git clone https://github.com/frdbonif/sys2mqtt.git`
+- `cd sys2mqtt`
+
+Now, open the python/conf.py file and enter the details for your MQTT server.
+
+- `cd /usr/local/bin/sys2mqtt`
+- `chmod -R 0755 python`
+- `cp systemd/sys2mqtt.service /etc/systemd/system/sys2mqtt.service`
+- `systemctl daemon-reload`
+- `systemctl enable sys2mqtt.service`
+- `systemctl start sys2mqtt.service`
+
+### Install on FreeBSD
+
+FreeBSD users should use the v0.2.3 branch until running sys2mqtt as a service on FreeBSD has been implemented.  This branch can be downloaded with the command: `git clone -b v0.2.3 https://github.com/frdbonif/sys2mqtt.git
