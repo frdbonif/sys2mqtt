@@ -19,7 +19,7 @@
     echo "Installing apt dependencies..."
     apt install python3 python3-pip -y
     echo "Installing pip dependencies..."
-    pip install psutil paho-mqtt spcket
+    pip3 install psutil paho-mqtt
     echo "Installing and enabling sys2mqtt service..."
     cp systemd/sys2mqtt.service /etc/systemd/system/sys2mqtt.service
     systemctl daemon-reload
