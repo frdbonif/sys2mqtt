@@ -1,8 +1,5 @@
- # This file should be placed into '/etc/systemd/system/'
- # This will enable systemd to automatically load sys2mqtt on boot
-
- [Unit]
- Description=sys2mqtt
+[Unit]
+ Description=sys2mqtt v0.3.0 - Publish system stats to your MQTT Broker
 
  [Service]
  ExecStart=/usr/local/bin/sys2mqtt/python/sys2mqtt.py

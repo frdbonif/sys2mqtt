@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# sys2mqtt version 0.2.9  (C) Fred Boniface 2020
+# sys2mqtt version 0.3.0  (C) Fred Boniface 2020
 # Distributed under the GPLv3 License
 
 # imports
