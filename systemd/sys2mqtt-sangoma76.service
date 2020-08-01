@@ -1,0 +1,8 @@
+[Unit]
+ Description=sys2mqtt v0.3.0 - Publish system stats to your MQTT Broker
+
+ [Service]
+ ExecStart=python3.6 /usr/local/bin/sys2mqtt/sys2mqtt.py
+
+ [Install]
+ WantedBy=multi-user.target
