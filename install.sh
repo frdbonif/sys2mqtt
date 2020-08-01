@@ -27,3 +27,5 @@
 else
     echo "That isn't a valid choice, try starting the script again."
     exit 2
+fi
+exit
