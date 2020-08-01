@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 
-# sys2mqtt version 0.2.3  (C) Fred Boniface 2020
+# sys2mqtt version 0.3.0  (C) Fred Boniface 2020
 # Distributed under the GPLv3 License
 
 # imports
-import socket			            # Included with python3
-import random                       # Included with python3
+from socket import gethostname      # Included with python3
+from random import randrange        # Included with python3
 import psutil                       # pip3 install psutil
 import paho.mqtt.client as mqtt     # pip3 install paho-mqtt
 import conf                         # Included with sys2mqtt
-
+from time import sleep              # Included with python3
 
 # Get hostname
 try:
-    host = socket.gethostname()
+    host = gethostname()
     print("Host is identified as " + "'" + host + "'")
 except:
     print("Unable to identify host,\nusing 'unknown'")
@@ -21,7 +21,7 @@ except:
 
 
 # MQTT parameters
-client_rng = random.randrange(0, 99999)
+client_rng = randrange(0, 99999)
 client_id = "sys2mqtt_{}".format(client_rng)
 # Topics
 corestopic = "sys2mqtt/" + host + "/cpu/cores"
@@ -59,27 +59,30 @@ def getmem():
     swaputil = swapmem[3] # Get swap util
     print("Swap utilisation = {}%".format(swaputil))
 
-getcpu()
-getmem()
 
+  # Initiate MQTT Connection
 
-# Print Topic Paths (DEBUGGING)
-#print(corestopic)
-#print(cpuutiltopic)
-#print(totramtopic)
-#print(ramutiltopic)
-#print(totswaptopic)
-#print(swaputiltopic)
-
-# Initiate MQTT Connection
+# Gather MQTT Broker information and initiate connection
 client = mqtt.Client()
 client.username_pw_set(conf.username, password=conf.password)
 client.connect(conf.broker_url, conf.broker_port)
 
-# Publish payloads
+# Publish static metrics once per startup.
 client.publish(topic=corestopic, payload=cores, qos=conf.q, retain=True)
-client.publish(topic=cpuutiltopic, payload=procutil, qos=conf.q, retain=False)
 client.publish(topic=totramtopic, payload=totramgbyte, qos=conf.q, retain=True)
-client.publish(topic=ramutiltopic, payload=memutil, qos=conf.q, retain=False)
 client.publish(topic=totswaptopic, payload=totswapgbyte, qos=conf.q, retain=True)
-client.publish(topic=swaputiltopic, payload=swaputil, qos=conf.q, retain=False)
+
+while True:
+
+  getcpu()
+  getmem()
+  print("Loop Completed")
+    
+  # Publish dynamic payloads
+  client.publish(topic=cpuutiltopic, payload=procutil, qos=conf.q, retain=False)
+  client.publish(topic=totramtopic, payload=totramgbyte, qos=conf.q, retain=True)
+  client.publish(topic=ramutiltopic, payload=memutil, qos=conf.q, retain=False)
+  client.publish(topic=totswaptopic, payload=totswapgbyte, qos=conf.q, retain=True)
+  client.publish(topic=swaputiltopic, payload=swaputil, qos=conf.q, retain=False)
+
+  sleep(10)
