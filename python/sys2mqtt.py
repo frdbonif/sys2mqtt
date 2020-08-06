@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 
-# sys2mqtt version 0.3.0  (C) Fred Boniface 2020
+# sys2mqtt version 0.4.0  (C) Fred Boniface 2020
 # Distributed under the GPLv3 License
 
 # imports
 from socket import gethostname      # Included with python3
 from random import randrange        # Included with python3
+from time import sleep              # Included with python3
+from os import name as platname     # Included with python3  >>?
+import platform                     # Included with python3  >>?
+import conf                         # Included with sys2mqtt
+import distro                       # pip3 install distro
 import psutil                       # pip3 install psutil
 import paho.mqtt.client as mqtt     # pip3 install paho-mqtt
-import conf                         # Included with sys2mqtt
-from time import sleep              # Included with python3
 
 # Get hostname
 try:
@@ -19,11 +22,41 @@ except:
     print("Unable to identify host,\nusing 'unknown'")
     host = "unknown"
 
+# Get platform
+try:
+    platform_type = platname
+    if(platform_type is 'posix'):
+        platform_dic = distro.linux_distribution()
+        op_sys = (platform_dic[0])
+        op_sys_ver = (platform_dic[1])
+        print(op_sys + " " + op_sys_ver + " detected")
+    elif(platform_type is 'nt'):
+        platform_dic = platform.uname()
+        op_sys = (platform_dic[0])
+        op_sys_ver = (platform_dic[1])
+        print(op_sys + " " + op_sys_ver + " detected")
+    elif(platform_type is 'java'):
+        op_sys = 'Java VM'
+        op_sys_ver = 'Version Unknown'
+        print(op_sys + " " + op_sys_ver + " detected")
+    else:
+        op_sys = 'Unknown'
+        op_sys_ver = 'Unknown'
+except:
+    platform_type = 'Unknown'
+
+#DEBUG-BLOCK
+print(platform_type)
+print(op_sys)
+print(op_sys_ver)
+#END-DEBUG-BLOCK
 
 # MQTT parameters
 client_rng = randrange(0, 99999)
 client_id = "sys2mqtt_{}".format(client_rng)
 # Topics
+ostopic = "sys2mqtt/" + host + "/sys/os"
+osvertopic = "sys2mqtt/" + host + "/sys/os/ver"
 corestopic = "sys2mqtt/" + host + "/cpu/cores"
 cpuutiltopic = "sys2mqtt/" + host + "/cpu/util"
 totramtopic = "sys2mqtt/" + host + "/mem/ram/total"
@@ -68,6 +101,8 @@ client.username_pw_set(conf.username, password=conf.password)
 client.connect(conf.broker_url, conf.broker_port)
 
 # Publish static metrics once per startup.
+client.publish(topic=ostopic, payload=op_sys, qos=conf.q, retain=True)
+client.publish(topic=osvertopic, payload=op_sys_ver, qos=conf.q, retain=True)
 client.publish(topic=corestopic, payload=cores, qos=conf.q, retain=True)
 client.publish(topic=totramtopic, payload=totramgbyte, qos=conf.q, retain=True)
 client.publish(topic=totswaptopic, payload=totswapgbyte, qos=conf.q, retain=True)

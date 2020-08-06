@@ -1,4 +1,4 @@
-# **sys2mqtt** v0.3.0
+# **sys2mqtt** v0.4.0
 
 ## License
 
@@ -12,8 +12,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 sys2mqtt was born out of my want to view statistics of several systems within OpenHAB.  Using MQTT the data can be displayed or stored in many ways.
 
-sys2mqtt v0.3.0 can publish the folliwing system statistics to an MQTT broker:
+sys2mqtt v0.4.0 can publish the folliwing system statistics to an MQTT broker:
 
+- OS Name and version
 - Number of logical CPU Cores
 - CPU Utilisation as a percentage
 - Total RAM
@@ -25,7 +26,7 @@ sys2mqtt v0.3.0 can publish the folliwing system statistics to an MQTT broker:
 
 The program has been tested for compatibility on the following operating systems, for further compatibility information you can check the documentation for psutil on GitHub.
 
-### v0.3.0 Tested on:
+### v0.3.0 Tested on: ***v0.4.0 requires full testing before merging to master***
 
 It is likely that sys2mqtt will run on a number other of systems but cannot be tested on every distro.
 All non-Windows systems listed below have been tested using default repos unless otherwise noted.
@@ -41,10 +42,12 @@ See footnotes for notes.
 #### Windows
 
 - Please use version 0.2.3 on Windows for the time being.
+- Once version 0.4.0 is merged to master Windows support will be ready.
 
 #### Other
 
 - Please use version 0.2.3 on FreeBSD for the time being.
+- Once version 0.4.0 is merged to master FreeBSD support will be ready.
 
 ## Installation (Debian & Ubuntu)
 

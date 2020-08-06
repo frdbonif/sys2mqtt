@@ -1,4 +1,4 @@
-# sys2mqtt version 0.3.0  (C) Fred Boniface 2020
+# sys2mqtt version 0.4.0  (C) Fred Boniface 2020
 # Distributed under the GPLv3 License
 
 ########## Start of settings block (move to external file) ############

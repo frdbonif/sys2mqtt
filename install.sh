@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "sys2mqtt v0.3.0"
+echo "sys2mqtt v0.4.0"
 echo "sys2mqtt will now be installed as a systemd service, if you do not use systemd this script will not work"
 echo "This script will currently only install on Debian and Ubuntu systems"
 echo "Would you like to continue? (y/n)"
@@ -16,7 +16,7 @@ elif [ $var_cont = y ]
 then
  chmod -R 0755 python
  apt install python3 python3-pip -y
- pip3 install psutil paho-mqtt
+ pip3 install psutil paho-mqtt distro
  cp systemd/sys2mqtt.service /etc/systemd/system/sys2mqtt.service
  systemctl daemon-reload
  systemctl enable sys2mqtt.service
