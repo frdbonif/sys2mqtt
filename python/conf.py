@@ -1,7 +1,7 @@
 # sys2mqtt version 0.4.0  (C) Fred Boniface 2020
 # Distributed under the GPLv3 License
 
-########## Start of settings block (move to external file) ############
+################### Start of user defined settings #####################
 
 # Set the URL and port of your MQTT broker
 # be sure to keep the correct format, as below.
@@ -17,4 +17,4 @@ password = "sys2mqtt"
 # 2 = "Broker will receive at most once".
 q = 1
 
-########################### END OF SETTINGS ###########################
+########################### END OF SETTINGS #############################

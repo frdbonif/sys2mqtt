@@ -9,6 +9,7 @@ from random import randrange        # Included with python3
 from time import sleep              # Included with python3
 from os import name as platname     # Included with python3  >>?
 import platform                     # Included with python3  >>?
+import atexit                       # Included with python3
 import conf                         # Included with sys2mqtt
 import distro                       # pip3 install distro
 import psutil                       # pip3 install psutil
@@ -25,17 +26,17 @@ except:
 # Get platform
 try:
     platform_type = platname
-    if(platform_type is 'posix'):
+    if(platform_type == 'posix'):
         platform_dic = distro.linux_distribution()
         op_sys = (platform_dic[0])
         op_sys_ver = (platform_dic[1])
         print(op_sys + " " + op_sys_ver + " detected")
-    elif(platform_type is 'nt'):
+    elif(platform_type == 'nt'):
         platform_dic = platform.uname()
         op_sys = (platform_dic[0])
         op_sys_ver = (platform_dic[1])
         print(op_sys + " " + op_sys_ver + " detected")
-    elif(platform_type is 'java'):
+    elif(platform_type == 'java'):
         op_sys = 'Java VM'
         op_sys_ver = 'Version Unknown'
         print(op_sys + " " + op_sys_ver + " detected")
@@ -51,18 +52,22 @@ print(op_sys)
 print(op_sys_ver)
 #END-DEBUG-BLOCK
 
-# MQTT parameters
+## This generates a random Client ID to prevent clashes on the MQTT broker ##
 client_rng = randrange(0, 99999)
 client_id = "sys2mqtt_{}".format(client_rng)
-# Topics
-ostopic = "sys2mqtt/" + host + "/sys/os"
-osvertopic = "sys2mqtt/" + host + "/sys/os/ver"
-corestopic = "sys2mqtt/" + host + "/cpu/cores"
-cpuutiltopic = "sys2mqtt/" + host + "/cpu/util"
-totramtopic = "sys2mqtt/" + host + "/mem/ram/total"
-ramutiltopic = "sys2mqtt/" + host + "/mem/ram/util"
-totswaptopic = "sys2mqtt/" + host + "/mem/swap/total"
-swaputiltopic = "sys2mqtt/" + host + "/mem/swap/util"
+
+## MQTT Topics ##
+## These are the default MQTT topics used by sys2mqtt ##
+mqos = "sys2mqtt/" + host + "/sys/os"
+mqosver = "sys2mqtt/" + host + "/sys/os/ver"
+mqlogcores = "sys2mqtt/" + host + "/cpu/cores"
+mqcpuutil = "sys2mqtt/" + host + "/cpu/util"
+mqtotram = "sys2mqtt/" + host + "/mem/ram/total"
+mqramutil = "sys2mqtt/" + host + "/mem/ram/util"
+mqtotswap = "sys2mqtt/" + host + "/mem/swap/total"
+mqswaputil = "sys2mqtt/" + host + "/mem/swap/util"
+mqconnect = "sys2mqtt/" + host + "/sys/connect"
+mqupdate = "sys2mqtt/" + host + "sys/lastupdate"
 
 # Get static metrics - CPU Cores, Total RAM, Total SWAP.
 cores = psutil.cpu_count() # Get cores
@@ -92,20 +97,29 @@ def getmem():
     swaputil = swapmem[3] # Get swap util
     print("Swap utilisation = {}%".format(swaputil))
 
-
-  # Initiate MQTT Connection
-
 # Gather MQTT Broker information and initiate connection
 client = mqtt.Client()
 client.username_pw_set(conf.username, password=conf.password)
 client.connect(conf.broker_url, conf.broker_port)
+client.publish(topic=mqconnect, payload='Yes', qos=conf.q, retain=False)
+
+# Define what to do if program is exited.
+def exiting():
+    print("Program exiting")
+    client.publish(topic=mqcpuutil, payload=0, qos=conf.q, retain=False)
+    client.publish(topic=mqramutil, payload=0, qos=conf.q, retain=False)
+    client.publish(topic=mqswaputil, payload=0, qos=conf.q, retain=False)
+    client.publish(topic=mqconnect, payload='No', qos=conf.q, retain=False)
+
+# Register exit action so it will be executed if program exits.
+atexit.register(exiting)
 
 # Publish static metrics once per startup.
-client.publish(topic=ostopic, payload=op_sys, qos=conf.q, retain=True)
-client.publish(topic=osvertopic, payload=op_sys_ver, qos=conf.q, retain=True)
-client.publish(topic=corestopic, payload=cores, qos=conf.q, retain=True)
-client.publish(topic=totramtopic, payload=totramgbyte, qos=conf.q, retain=True)
-client.publish(topic=totswaptopic, payload=totswapgbyte, qos=conf.q, retain=True)
+client.publish(topic=mqos, payload=op_sys, qos=conf.q, retain=True)
+client.publish(topic=mqosver, payload=op_sys_ver, qos=conf.q, retain=True)
+client.publish(topic=mqlogcores, payload=cores, qos=conf.q, retain=True)
+client.publish(topic=mqtotram, payload=totramgbyte, qos=conf.q, retain=True)
+client.publish(topic=mqtotswap, payload=totswapgbyte, qos=conf.q, retain=True)
 
 while True:
 
@@ -114,10 +128,8 @@ while True:
   print("Loop Completed")
     
   # Publish dynamic payloads
-  client.publish(topic=cpuutiltopic, payload=procutil, qos=conf.q, retain=False)
-  client.publish(topic=totramtopic, payload=totramgbyte, qos=conf.q, retain=True)
-  client.publish(topic=ramutiltopic, payload=memutil, qos=conf.q, retain=False)
-  client.publish(topic=totswaptopic, payload=totswapgbyte, qos=conf.q, retain=True)
-  client.publish(topic=swaputiltopic, payload=swaputil, qos=conf.q, retain=False)
+  client.publish(topic=mqcpuutil, payload=procutil, qos=conf.q, retain=False)
+  client.publish(topic=mqramutil, payload=memutil, qos=conf.q, retain=False)
+  client.publish(topic=mqswaputil, payload=swaputil, qos=conf.q, retain=False)
 
   sleep(10)

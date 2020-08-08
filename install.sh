@@ -17,7 +17,7 @@ then
  chmod -R 0755 python
  apt install python3 python3-pip -y
  pip3 install psutil paho-mqtt distro
- cp systemd/sys2mqtt.service /etc/systemd/system/sys2mqtt.service
+ cp systemd/sys2mqtt-deb.service /etc/systemd/system/sys2mqtt.service
  systemctl daemon-reload
  systemctl enable sys2mqtt.service
  systemctl start sys2mqtt.service
