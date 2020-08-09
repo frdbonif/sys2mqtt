@@ -81,22 +81,6 @@ totswapbyte = swapmem[0] # Get total swap
 totswapgbyte = round(totswapbyte / 1073741824, 1) # Convert to GB (1 decimal place)
 print("Total swap = {} GB".format(totswapgbyte))
 
-# Get CPU Cores & Utilisation
-def getcpu():
-    global procutil
-
-    procutil = psutil.cpu_percent() # Get CPU usage
-    print("CPU utilisation = {}%".format(procutil))
-
-# Get RAM Utilisation
-def getmem():
-    global virtmem, memutil, swapmem, swaputil
-
-    memutil = virtmem[2] # Get RAM util
-    print("RAM utilisation = {}%".format(memutil))
-    swaputil = swapmem[3] # Get swap util
-    print("Swap utilisation = {}%".format(swaputil))
-
 # Gather MQTT Broker information and initiate connection
 client = mqtt.Client()
 client.username_pw_set(conf.username, password=conf.password)
@@ -121,15 +105,28 @@ client.publish(topic=mqlogcores, payload=cores, qos=conf.q, retain=True)
 client.publish(topic=mqtotram, payload=totramgbyte, qos=conf.q, retain=True)
 client.publish(topic=mqtotswap, payload=totswapgbyte, qos=conf.q, retain=True)
 
+# Get & Publish CPU Cores & Utilisation
+def getcpu():
+    global mqcpuutil
+
+    procutil = psutil.cpu_percent() # Get CPU usage
+    print("CPU utilisation = {}%".format(procutil))
+    client.publish(topic=mqcpuutil, payload=procutil, qos=conf.q, retain=False)
+
+# Get & Publish RAM Utilisation
+def getmem():
+    global virtmem, swapmem, mqramutil, mqswaputil
+
+    memutil = virtmem[2] # Get RAM util
+    print("RAM utilisation = {}%".format(memutil))
+    client.publish(topic=mqramutil, payload=memutil, qos=conf.q, retain=False)
+    swaputil = swapmem[3] # Get swap util
+    print("Swap utilisation = {}%".format(swaputil))
+    client.publish(topic=mqswaputil, payload=swaputil, qos=conf.q, retain=False)
+
 while True:
 
-  getcpu()
-  getmem()
-  print("Loop Completed")
-    
-  # Publish dynamic payloads
-  client.publish(topic=mqcpuutil, payload=procutil, qos=conf.q, retain=False)
-  client.publish(topic=mqramutil, payload=memutil, qos=conf.q, retain=False)
-  client.publish(topic=mqswaputil, payload=swaputil, qos=conf.q, retain=False)
-
-  sleep(10)
+    getcpu()
+    getmem()
+    print("Loop Completed")
+    sleep(10)
