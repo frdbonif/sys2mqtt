@@ -131,3 +131,12 @@ Now, open the python/conf.py file and enter the details for your MQTT server.
 ### Install on FreeBSD
 
 FreeBSD users should use the v0.2.3 branch until running sys2mqtt as a service on FreeBSD has been implemented.  This branch can be downloaded with the command: `git clone -b v0.2.3 https://github.com/frdbonif/sys2mqtt.git
+
+### Install on Windows
+
+- To install v0.4.0 on Windows, download the .zip from GitHub (Click on the 'Code' button at the top right of the page).
+- Extract this .zip file into `C:\sys2mqtt\`
+- Open the `Task Scheduler`, you will need to run this as an Administrator.
+- Create a new custom task that runs `sys2mqtt` at boot as the `system` user.
+    - To run sys2mqtt, choose the program location `C:\sys2mqtt\python\sys2mqtt.py`
+

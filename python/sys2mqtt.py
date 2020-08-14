@@ -69,7 +69,13 @@ mqswaputil = "sys2mqtt/" + host + "/mem/swap/util"
 mqconnect = "sys2mqtt/" + host + "/sys/connect"
 mqupdate = "sys2mqtt/" + host + "sys/lastupdate"
 
-# Get static metrics - CPU Cores, Total RAM, Total SWAP.
+# Gather MQTT Broker information and initiate connection
+client = mqtt.Client()
+client.username_pw_set(conf.username, password=conf.password)
+client.connect(conf.broker_url, conf.broker_port)
+client.publish(topic=mqconnect, payload='Yes', qos=conf.q, retain=False)
+
+# Get & Publish static metrics - CPU Cores, Total RAM, Total SWAP.
 cores = psutil.cpu_count() # Get cores
 print("{} cores identified".format(cores))
 virtmem = psutil.virtual_memory() # Get RAM details
@@ -81,11 +87,12 @@ totswapbyte = swapmem[0] # Get total swap
 totswapgbyte = round(totswapbyte / 1073741824, 1) # Convert to GB (1 decimal place)
 print("Total swap = {} GB".format(totswapgbyte))
 
-# Gather MQTT Broker information and initiate connection
-client = mqtt.Client()
-client.username_pw_set(conf.username, password=conf.password)
-client.connect(conf.broker_url, conf.broker_port)
-client.publish(topic=mqconnect, payload='Yes', qos=conf.q, retain=False)
+# Publish static metrics once
+client.publish(topic=mqos, payload=op_sys, qos=conf.q, retain=True)
+client.publish(topic=mqosver, payload=op_sys_ver, qos=conf.q, retain=True)
+client.publish(topic=mqlogcores, payload=cores, qos=conf.q, retain=True)
+client.publish(topic=mqtotram, payload=totramgbyte, qos=conf.q, retain=True)
+client.publish(topic=mqtotswap, payload=totswapgbyte, qos=conf.q, retain=True)
 
 # Define what to do if program is exited.
 def exiting():
@@ -97,13 +104,6 @@ def exiting():
 
 # Register exit action so it will be executed if program exits.
 atexit.register(exiting)
-
-# Publish static metrics once per startup.
-client.publish(topic=mqos, payload=op_sys, qos=conf.q, retain=True)
-client.publish(topic=mqosver, payload=op_sys_ver, qos=conf.q, retain=True)
-client.publish(topic=mqlogcores, payload=cores, qos=conf.q, retain=True)
-client.publish(topic=mqtotram, payload=totramgbyte, qos=conf.q, retain=True)
-client.publish(topic=mqtotswap, payload=totswapgbyte, qos=conf.q, retain=True)
 
 # Get & Publish CPU Cores & Utilisation
 def getcpu():
@@ -124,8 +124,12 @@ def getmem():
     print("Swap utilisation = {}%".format(swaputil))
     client.publish(topic=mqswaputil, payload=swaputil, qos=conf.q, retain=False)
 
+# Main
 while True:
+    # Connect to broker - this will ensure that if the connection is dropped it will be re-established.
+    client.connect(conf.broker_url, conf.broker_port)
 
+    # The functions get and publish the related statistics.
     getcpu()
     getmem()
     print("Loop Completed")
