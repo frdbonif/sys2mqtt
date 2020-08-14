@@ -96,8 +96,8 @@ This information will be available on the sys2mqtt wiki.
 
 ## Footnotes
 
-<sup>1 </sup> - Tested on FreePBX Install.
-<sup>2 </sup> - Tested on Rasbian 10 on Raspberry Pi 3B.
+- <sup>1 </sup> - Tested on FreePBX Install.
+- <sup>2 </sup> - Tested on Rasbian 10 on Raspberry Pi 3B.
 
 ### Install on Sangoma Linux 7.6 (login as root)
 
