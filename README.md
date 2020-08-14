@@ -53,7 +53,15 @@ See footnotes for notes.
 - Jython, this project uses modules that are not available to Jython.
 - Python 2.x, this project is not compatible with Python 2.x which is no longer supported.  Python 2.x and Python 3.x can run independently on the same device if needed.
 
-## Installation (Debian & Ubuntu)
+## Installation 
+
+## MQTT Topics
+
+This information will be available on the sys2mqtt wiki.
+
+## Installation Instructions
+
+### Install with `install.sh` (Debian & Ubuntu)
 
 See the bottom of the page for installation on other systems, we don't have a wiki at the moment.
 
@@ -78,26 +86,6 @@ Make sure the required files are executable.
 
 Run the installer script.  Be aware: You should always check scripts before you run them to be sure you know what they are modifying on your system.  If you'd rather not run the installer script, check the bottom of this README for alternative options.
 `#``./install.sh`
-
-## MQTT Topics
-
-This information will be available on the sys2mqtt wiki.
-
-## Task List
-
-- [ ] 0.4.0 Inclusion of drive information.
-- [ ] 0.4.0 Implement ON/OFF state setting suitable parameters to zero on shutdown.
-- [ ] 0.4.0 Inclusion of temerature and fan information.
-- [ ] 0.4.0 Extend `conf.py` file to allow users to choose which metrics they would like enabled.
-- [ ] 0.4.4 Improved error handling.
-- [ ] 0.4.2 Move to self hosted git solution.
-- [ ] 0.4.2 Create wiki for documentation.
-- [ ] 0.4.3 Logging.
-
-## Footnotes
-
-- <sup>1 </sup> - Tested on FreePBX Install.
-- <sup>2 </sup> - Tested on Rasbian 10 on Raspberry Pi 3B.
 
 ### Install on Sangoma Linux 7.6 (login as root)
 
@@ -145,3 +133,7 @@ FreeBSD users should use the v0.2.3 branch until running sys2mqtt as a service o
 - Create a new custom task that runs `sys2mqtt` at boot as the `system` user.
     - To run sys2mqtt, choose the program location `C:\sys2mqtt\python\sys2mqtt.py`
 
+## Footnotes
+
+- <sup>1 </sup> Tested on FreePBX Install.
+- <sup>2 </sup> Tested on Rasbian 10 on Raspberry Pi 3B.
