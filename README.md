@@ -1,4 +1,4 @@
-# **sys2mqtt** v0.3.0
+# **sys2mqtt** v0.4.0
 
 ## License
 
@@ -12,8 +12,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 sys2mqtt was born out of my want to view statistics of several systems within OpenHAB.  Using MQTT the data can be displayed or stored in many ways.
 
-sys2mqtt v0.3.0 can publish the folliwing system statistics to an MQTT broker:
+sys2mqtt v0.4.0 can publish the folliwing system statistics to an MQTT broker:
 
+- OS Name and version
 - Number of logical CPU Cores
 - CPU Utilisation as a percentage
 - Total RAM
@@ -25,7 +26,7 @@ sys2mqtt v0.3.0 can publish the folliwing system statistics to an MQTT broker:
 
 The program has been tested for compatibility on the following operating systems, for further compatibility information you can check the documentation for psutil on GitHub.
 
-### v0.3.0 Tested on:
+### v0.3.0 Tested on: ***v0.4.0 requires full testing before merging to master***
 
 It is likely that sys2mqtt will run on a number other of systems but cannot be tested on every distro.
 All non-Windows systems listed below have been tested using default repos unless otherwise noted.
@@ -33,18 +34,24 @@ See footnotes for notes.
 
 #### Linux
 
-- CentOS 8<sup>1</sup>
+- CentOS 8
 - Debian 10
-- Sangoma Linux 7.6
+- Sangoma Linux 7.6<sup> 1</sup>
 - Ubuntu, 18.04, 20.04
+- Rasperry Pi OS/Rasbian, 10<sup> 2</sup>
 
 #### Windows
 
-- Please use version 0.2.3 on Windows for the time being.
+- Windows 10, Version 2004
 
 #### Other
 
-- Please use version 0.2.3 on FreeBSD for the time being.
+- FreeBSD 12 (No installation intructions)
+
+#### Known not working
+
+- Jython, this project uses modules that are not available to Jython.
+- Python 2.x, this project is not compatible with Python 2.x which is no longer supported.  Python 2.x and Python 3.x can run independently on the same device if needed.
 
 ## Installation (Debian & Ubuntu)
 
@@ -78,20 +85,19 @@ This information will be available on the sys2mqtt wiki.
 
 ## Task List
 
-- [ ] 0.3.0 Create installer script.
-- [ ] 0.3.0 Insert loop into program to remove reliance on cron or systemd timers.
-- [ ] 0.3.1 Inclusion of drive information.
-- [ ] 0.3.1 Implement ON/OFF state setting suitable parameters to zero on shutdown.
-- [ ] 0.3.2 Inclusion of temerature and fan information.
+- [ ] 0.4.0 Inclusion of drive information.
+- [ ] 0.4.0 Implement ON/OFF state setting suitable parameters to zero on shutdown.
+- [ ] 0.4.0 Inclusion of temerature and fan information.
 - [ ] 0.4.0 Extend `conf.py` file to allow users to choose which metrics they would like enabled.
-- [ ] 0.5.0 Improved error handling.
-- [ ] 0.5.1 Move to self hosted git solution.
-- [ ] 0.5.2 Create wiki for documentation.
-- [ ] 0.9.9(rc) Logging.
+- [ ] 0.4.4 Improved error handling.
+- [ ] 0.4.2 Move to self hosted git solution.
+- [ ] 0.4.2 Create wiki for documentation.
+- [ ] 0.4.3 Logging.
 
 ## Footnotes
 
-Only tested on Intel CPU's although believed to work on other x86 CPU's.
+<sup>1 </sup> - Tested on FreePBX Install.
+<sup>2 </sup> - Tested on Rasbian 10 on Raspberry Pi 3B.
 
 ### Install on Sangoma Linux 7.6 (login as root)
 
@@ -130,3 +136,12 @@ Now, open the python/conf.py file and enter the details for your MQTT server.
 ### Install on FreeBSD
 
 FreeBSD users should use the v0.2.3 branch until running sys2mqtt as a service on FreeBSD has been implemented.  This branch can be downloaded with the command: `git clone -b v0.2.3 https://github.com/frdbonif/sys2mqtt.git
+
+### Install on Windows
+
+- To install v0.4.0 on Windows, download the .zip from GitHub (Click on the 'Code' button at the top right of the page).
+- Extract the .zip file into `C:\sys2mqtt\`
+- Open `Task Scheduler`, you will need to run this as an Administrator.
+- Create a new custom task that runs `sys2mqtt` at boot as the `system` user.
+    - To run sys2mqtt, choose the program location `C:\sys2mqtt\python\sys2mqtt.py`
+
