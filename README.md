@@ -33,7 +33,7 @@ See footnotes for notes.
 
 #### Linux
 
-- CentOS 8
+- CentOS 8<sup>1</sup>
 - Debian 10
 - Sangoma Linux 7.6
 - Ubuntu, 18.04, 20.04
