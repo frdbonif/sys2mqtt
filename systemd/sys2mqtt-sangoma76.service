@@ -5,5 +5,8 @@
 [Service]
  ExecStart=/usr/bin/python3.6 /usr/local/bin/sys2mqtt/python/sys2mqtt.py
  KillSignal=SIGINT
+ RestartSec=10
+ Restart=always
+
 [Install]
  WantedBy=multi-user.target

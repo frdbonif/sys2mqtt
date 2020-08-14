@@ -108,7 +108,7 @@ def exiting():
     sleep(0.1)
     client.publish(topic=mqswaputil, payload=0, qos=conf.q, retain=False)
     sleep(0.1)
-    client.publish(topic=mqconnect, payload='No', qos=conf.q, retain=False)
+    client.publish(topic=mqconnect, payload='No', qos=conf.q, retain=True)
 
 # Register exit action so it will be executed if program exits.
 atexit.register(exiting)
@@ -136,6 +136,9 @@ def getmem():
 while True:
     # Connect to broker - this will ensure that if the connection is dropped it will be re-established.
     client.connect(conf.broker_url, conf.broker_port)
+
+    # Republish 'Connected=Yes' at every loop.
+    client.publish(topic=mqconnect, payload='Yes', qos=conf.q, retain=False)
 
     # The functions get and publish the related statistics.
     getcpu()
