@@ -36,18 +36,22 @@ See footnotes for notes.
 
 - CentOS 8
 - Debian 10
-- Sangoma Linux 7.6
+- Sangoma Linux 7.6<sup> 1</sup>
 - Ubuntu, 18.04, 20.04
+- Rasperry Pi OS/Rasbian, 10<sup> 2</sup>
 
 #### Windows
 
-- Please use version 0.2.3 on Windows for the time being.
-- Once version 0.4.0 is merged to master Windows support will be ready.
+- Windows 10, Version 2004
 
 #### Other
 
-- Please use version 0.2.3 on FreeBSD for the time being.
-- Once version 0.4.0 is merged to master FreeBSD support will be ready.
+- FreeBSD 12 (No installation intructions)
+
+#### Known not working
+
+- Jython, this project uses modules that are not available to Jython.
+- Python 2.x, this project is not compatible with Python 2.x which is no longer supported.  Python 2.x and Python 3.x can run independently on the same device if needed.
 
 ## Installation (Debian & Ubuntu)
 
@@ -92,7 +96,8 @@ This information will be available on the sys2mqtt wiki.
 
 ## Footnotes
 
-Only tested on Intel CPU's although believed to work on other x86 CPU's.
+<sup>1 </sup> - Tested on FreePBX Install.
+<sup>2 </sup> - Tested on Rasbian 10 on Raspberry Pi 3B.
 
 ### Install on Sangoma Linux 7.6 (login as root)
 
@@ -135,8 +140,8 @@ FreeBSD users should use the v0.2.3 branch until running sys2mqtt as a service o
 ### Install on Windows
 
 - To install v0.4.0 on Windows, download the .zip from GitHub (Click on the 'Code' button at the top right of the page).
-- Extract this .zip file into `C:\sys2mqtt\`
-- Open the `Task Scheduler`, you will need to run this as an Administrator.
+- Extract the .zip file into `C:\sys2mqtt\`
+- Open `Task Scheduler`, you will need to run this as an Administrator.
 - Create a new custom task that runs `sys2mqtt` at boot as the `system` user.
     - To run sys2mqtt, choose the program location `C:\sys2mqtt\python\sys2mqtt.py`
 
