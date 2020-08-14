@@ -1,15 +1,15 @@
 #!/bin/bash
 
 echo "sys2mqtt v0.4.0"
-echo "sys2mqtt will now be installed as a systemd service, if you do not use systemd this script will not work"
-echo "This script will currently only install on Debian and Ubuntu systems"
+echo "sys2mqtt will now be installed as a systemd service, if you do not use systemd this script will not work on your system"
+echo "This script will currently only install on Debian, Ubuntu & Raspberry Pi OS systems"
 echo "Would you like to continue? (y/n)"
 read var_cont
 
 if [ $var_cont = n ]
 then
  echo "You have chosen not to continue."
- echo "Visit the sys2mqtt readme for alternative installation methods"
+ echo "Visit https://sys2mqtt.fjla.uk for alternative installation methods"
  exit 1
 
 elif [ $var_cont = y ]
