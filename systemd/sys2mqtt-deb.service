@@ -1,8 +1,9 @@
 [Unit]
  Description=sys2mqtt v0.3.0 - Publish system stats to your MQTT Broker
+ After=network-online.target
 
- [Service]
+[Service]
  ExecStart=/usr/local/bin/sys2mqtt/python/sys2mqtt.py
-
- [Install]
+ KillSignal=SIGINT
+[Install]
  WantedBy=multi-user.target

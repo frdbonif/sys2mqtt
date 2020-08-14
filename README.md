@@ -55,11 +55,9 @@ See footnotes for notes.
 
 ## Installation 
 
-## MQTT Topics
+Installation instructions for various operating systems/platforms.  Once we have a working wiki this will be moved there but for now, I'll leave it to clutter up the README.
 
-This information will be available on the sys2mqtt wiki.
-
-## Installation Instructions
+If you want to use sys2mqtt on another system that isn't listed, it's very likely to work as a cross-platform approach was taken when choosing which packages to import and when writing the code.  As long as your chosen platform can run `python3` and can run the program at boot then you should be fine.  If you get it working then please do share, you can even update the install guides to help others.
 
 ### Install with `install.sh` (Debian & Ubuntu)
 
@@ -67,7 +65,7 @@ See the bottom of the page for installation on other systems, we don't have a wi
 
 Firstly, the program requires Python 3 and has been developed using Python 3.8.2.  It also relies on the psutil, socket and paho-mqtt Python packages.  If you follow the method below, these will all be installed for you.
 
-You can install sys2mqtt as follows on Debian based systems, for other systems consult the wiki.  (Commands starting $ to be run as user, commands starting # to be run as root or using sudo)
+You can install sys2mqtt as follows on Debian based systems.  (Commands starting $ to be run as user, commands starting # to be run as root or using sudo)
 
 Ensure dependencies are available.
 `#``apt install git`
