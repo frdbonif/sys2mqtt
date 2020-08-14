@@ -88,18 +88,26 @@ totswapgbyte = round(totswapbyte / 1073741824, 1) # Convert to GB (1 decimal pla
 print("Total swap = {} GB".format(totswapgbyte))
 
 # Publish static metrics once
-client.publish(topic=mqos, payload=op_sys, qos=conf.q, retain=True)
-client.publish(topic=mqosver, payload=op_sys_ver, qos=conf.q, retain=True)
-client.publish(topic=mqlogcores, payload=cores, qos=conf.q, retain=True)
-client.publish(topic=mqtotram, payload=totramgbyte, qos=conf.q, retain=True)
-client.publish(topic=mqtotswap, payload=totswapgbyte, qos=conf.q, retain=True)
+client.publish(topic=mqos, payload=op_sys, qos=1, retain=True)
+sleep(0.2)
+client.publish(topic=mqosver, payload=op_sys_ver, qos=1, retain=True)
+sleep(0.2)
+client.publish(topic=mqlogcores, payload=cores, qos=1, retain=True)
+sleep(0.2)
+client.publish(topic=mqtotram, payload=totramgbyte, qos=1, retain=True)
+sleep(0.2)
+client.publish(topic=mqtotswap, payload=totswapgbyte, qos=1, retain=True)
+sleep(0.2)
 
 # Define what to do if program is exited.
 def exiting():
     print("Program exiting")
     client.publish(topic=mqcpuutil, payload=0, qos=conf.q, retain=False)
+    sleep(0.1)
     client.publish(topic=mqramutil, payload=0, qos=conf.q, retain=False)
+    sleep(0.1)
     client.publish(topic=mqswaputil, payload=0, qos=conf.q, retain=False)
+    sleep(0.1)
     client.publish(topic=mqconnect, payload='No', qos=conf.q, retain=False)
 
 # Register exit action so it will be executed if program exits.
