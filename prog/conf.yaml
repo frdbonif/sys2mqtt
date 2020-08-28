@@ -1,0 +1,12 @@
+mqtt conf:
+    broker: mqtt.fjla.uk
+    port: 1883
+    username: testuser
+    password: testpasswd
+    qos: 0
+    baseTopic: test
+    discovery: no
+
+test-conf:
+    test: yes
+    dict: True
